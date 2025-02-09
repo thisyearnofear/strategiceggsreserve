@@ -68,7 +68,6 @@ const EggReserveDashboard = () => {
   }
 
   const formatPrice = (value: ValueType) => `$${Number(value).toFixed(2)}`;
-  const formatBillions = (value: number) => `$${value.toFixed(1)}B`;
   const formatTrillions = (value: number) => `$${(value / 1000).toFixed(2)}T`;
 
   // Calculate key metrics
@@ -100,8 +99,8 @@ const EggReserveDashboard = () => {
         <AlertDescription className="text-yellow-700 text-lg">
           If the US had established a {hypotheticalReserveSize}B egg Strategic
           Reserve before {formattedAthDate}, it would be worth{" "}
-          {formatTrillions(potentialValue)} at ATH prices! That's{" "}
-          {percentOfDebt}% of the national debt!
+          {formatTrillions(potentialValue)} at ATH prices! Thats {percentOfDebt}
+          % of the national debt!
         </AlertDescription>
       </Alert>
 
