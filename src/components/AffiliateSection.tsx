@@ -84,6 +84,13 @@ const AffiliateSection = () => {
               </div>
 
               <div className="space-y-6 text-center">
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                  <p className="text-blue-800 font-semibold">
+                    Join the Strategic Egg Reserve Initiative! Each backyard
+                    coop strengthens Americas egg independence.
+                  </p>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="bg-white rounded-lg p-6 shadow-md">
                     <h4 className="font-semibold text-gray-800 mb-4">
@@ -158,7 +165,7 @@ const AffiliateSection = () => {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline ml-1"
                     >
-                      Statista Egg Consumption Data
+                      US Egg Consumption
                     </a>
                     <span className="mx-2">•</span>
                     <a
@@ -167,7 +174,7 @@ const AffiliateSection = () => {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
-                      Henhouse Collection Cost Analysis
+                      Henhouse Collection Analysis
                     </a>
                   </p>
                   <p className="italic">

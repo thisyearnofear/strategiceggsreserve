@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "STRATEGICEGGRESERVE",
-  description: "STRATEGICEGGFUND",
+  title: "SERVE",
+  description: "STRATEGIC EGG RESERVE",
 };
 
 export default function RootLayout({

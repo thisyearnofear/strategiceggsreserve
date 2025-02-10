@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const PRICE_CHART_ID = "price-chart-widget-container";
 
@@ -36,9 +36,15 @@ declare global {
 
 const PriceChartWidget = () => {
   const containerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Set a minimum loading time of 5 seconds
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
 
     const loadWidget = () => {
       setTimeout(() => {
@@ -61,8 +67,6 @@ const PriceChartWidget = () => {
             hideTopToolbar: false,
             hideBottomToolbar: false,
           });
-        } else {
-          console.error("createMyWidget function is not defined.");
         }
       }, 500);
     };
@@ -74,18 +78,45 @@ const PriceChartWidget = () => {
       script.type = "text/javascript";
       script.async = true;
       script.onload = loadWidget;
-      script.onerror = () => {
-        console.error("Failed to load the chart widget script.");
-      };
       document.body.appendChild(script);
     } else {
       loadWidget();
     }
+
+    return () => {
+      clearTimeout(loadingTimer);
+    };
   }, []);
 
   return (
-    <div className="w-full h-[600px]">
+    <div className="relative w-full h-[600px]">
+      {/* The Moralis widget container */}
       <div id={PRICE_CHART_ID} ref={containerRef} className="w-full h-full" />
+
+      {/* Loading overlay */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-[#071321] bg-opacity-90 flex items-center justify-center z-50">
+          <div className="text-center space-y-6">
+            <div className="relative">
+              <div className="animate-bounce w-24 h-24 mx-auto">
+                <div className="w-24 h-24 rounded-full bg-yellow-100 border-4 border-yellow-200 relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    🥚
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 text-2xl font-bold text-yellow-600">
+                Hatching market data...
+              </div>
+            </div>
+            <div className="space-y-2 text-gray-400">
+              <p>🥚 Incubating the chart...</p>
+              <p>📊 Counting chickens before they hatch...</p>
+              <p>💹 Preparing egg-cellent analysis...</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -97,7 +128,7 @@ const PumpSection = () => {
         <CardContent className="p-6">
           <div className="text-center space-y-6">
             <div className="flex items-center justify-center space-x-3">
-              <h2 className="text-3xl font-bold">📈 Market Data</h2>
+              <h2 className="text-3xl font-bold">📈 Tokens = Attention</h2>
               <span className="animate-pulse text-2xl">🥚</span>
             </div>
 

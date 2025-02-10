@@ -194,9 +194,11 @@ const EggReserveDashboard = () => {
       `While gold shines and oil flows, eggs have returned ${eggReturn.toFixed(
         1
       )}% since ${new Date(data[0]?.date).toLocaleDateString()}! 🥚📈`,
-      "Gold bugs and oil barons step aside - the real money is in egg futures! 🐔",
-      "Forget black gold, we&apos;re into white gold... egg whites that is! 🍳",
-      "Breaking: Eggs outperforming traditional commodities in taste AND returns! 🏆",
+      "Forget crypto gains, the real gainz are in egg proteins! 💪",
+      "Japan: 3,225 eggs per capita. USA: 328. Time to pump those numbers up! 🏋️‍♂️",
+      "Breaking: Gym bros discover eggs are the original protein coin! 🥚💪",
+      "Who needs a gold reserve when you can have an egg reserve? Every dozen is gains! 🏋️‍♀️",
+      "Chinas egg production is no yolk - time to close the Egg Gap! 🇺🇸",
     ];
     return quotes[Math.floor(Math.random() * quotes.length)];
   };
@@ -211,7 +213,7 @@ const EggReserveDashboard = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <AlertTitle className="text-yellow-800 font-bold text-xl">
-              🚨 STRATEGIC EGG RESERVE ALERT 🚨
+              🚨 STRATEGIC EGG RESERVE (SERVE) ALERT 🚨
             </AlertTitle>
             <div className="flex items-center space-x-2">
               <span className="text-sm text-yellow-700">Start Date:</span>
@@ -229,7 +231,7 @@ const EggReserveDashboard = () => {
                         {new Date(d.date).toLocaleDateString()}
                       </SelectItem>
                     ))
-                    .filter((_, i) => i % 30 === 0)}
+                    .filter((_, i) => i % 12 === 0)}
                 </SelectContent>
               </Select>
             </div>
@@ -369,23 +371,65 @@ const EggReserveDashboard = () => {
           <span className="absolute -top-2 -right-2 text-2xl animate-bounce">
             🏦
           </span>
-          <h3 className="font-bold text-xl mb-4">Egg-conomic Context</h3>
-          <div className="space-y-2">
-            <p className="text-lg">
-              <span className="font-semibold">
-                Strategic Reserve Value at ATH:
-              </span>{" "}
-              {formatTrillions(reserveMetrics.value)}
-            </p>
-            <p className="text-lg">
-              <span className="font-semibold">Current US National Debt:</span> $
-              {US_DEBT_TRILLIONS}T
-            </p>
-            <p className="text-lg font-bold text-purple-600 animate-pulse">
-              A Strategic Egg Reserve could have paid off{" "}
-              {reserveMetrics.debtPercentage.toFixed(1)}% of the national debt!
-              🤯
-            </p>
+          <h3 className="font-bold text-center justify-center text-xl mb-4">
+            Egg-conomic Context
+          </h3>
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="text-center">
+                  <span className="text-2xl">🇨🇳</span>
+                  <p className="font-semibold">China</p>
+                  <p className="text-sm text-gray-600">612.83B eggs/year</p>
+                  <p className="text-xs text-gray-500">434 eggs per capita</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="text-center">
+                  <span className="text-2xl">🇯🇵</span>
+                  <p className="font-semibold">Japan</p>
+                  <p className="text-sm text-gray-600">400B eggs/year</p>
+                  <p className="text-xs text-gray-500">3,225 eggs per capita</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <div className="text-center">
+                  <span className="text-2xl">🇺🇸</span>
+                  <p className="font-semibold">USA</p>
+                  <p className="text-sm text-gray-600">109.53B eggs/year</p>
+                  <p className="text-xs text-gray-500">328 eggs per capita</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-yellow-100 p-4 rounded-lg">
+              <p className="text-lg font-semibold text-center justify-center text-yellow-800 mb-2">
+                🎖️ SERVE YOUR NATION
+              </p>
+              <p className="text-sm text-yellow-700">
+                USA lags behind in eggs per capita. Strategic Egg Reserve is
+                about increasing egg capacity, closing the Egg Gap and
+                strengthening national egg security!
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="text-lg">
+                <span className="font-semibold">
+                  Strategic Reserve Value at ATH:
+                </span>{" "}
+                {formatTrillions(reserveMetrics.value)}
+              </p>
+              <p className="text-lg">
+                <span className="font-semibold">Current US National Debt:</span>{" "}
+                ${US_DEBT_TRILLIONS}T
+              </p>
+              <p className="text-lg font-bold text-purple-600 animate-pulse">
+                A Strategic Egg Reserve could have paid off{" "}
+                {reserveMetrics.debtPercentage.toFixed(1)}% of the national debt
+                while strengthening our egg independence! 🦅
+              </p>
+            </div>
           </div>
         </div>
       </Card>
@@ -395,7 +439,17 @@ const EggReserveDashboard = () => {
         <div>
           <h4 className="font-semibold mb-2">Data Sources</h4>
           <ul className="space-y-1">
-            <li>• USDA Weekly Retail Shell Egg Prices</li>
+            <li>
+              •{" "}
+              <a
+                href="https://fred.stlouisfed.org/series/APU0000708111"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                FRED (Federal Reserve Economic Data) Egg Prices
+              </a>
+            </li>
             <li>
               •{" "}
               <a
@@ -405,6 +459,17 @@ const EggReserveDashboard = () => {
                 className="text-blue-600 hover:underline"
               >
                 US Debt Clock
+              </a>
+            </li>
+            <li>
+              •{" "}
+              <a
+                href="https://www.statista.com/statistics/263971/top-10-countries-worldwide-in-egg-production/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                Global Egg Production Stats
               </a>
             </li>
           </ul>

@@ -17,7 +17,7 @@ export async function GET() {
 
   try {
     const response = await fetch(
-      `https://api.stlouisfed.org/fred/series/observations?series_id=${series_id}&api_key=${FRED_API_KEY}&file_type=json&frequency=m&sort_order=asc&observation_start=2020-01-01`
+      `https://api.stlouisfed.org/fred/series/observations?series_id=${series_id}&api_key=${FRED_API_KEY}&file_type=json&frequency=m&sort_order=asc&observation_start=1980-01-01`
     );
 
     if (!response.ok) {
