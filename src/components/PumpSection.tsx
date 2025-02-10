@@ -52,7 +52,7 @@ const PriceChartWidget = () => {
           window.createMyWidget(PRICE_CHART_ID, {
             autoSize: true,
             chainId: "solana",
-            tokenAddress: "AUz3m3YA5EAtNm3vBqav4bB3azgvkvMQhsie5xMtUJPN",
+            tokenAddress: "DDUthBrLTJq8uNjLFYmf2dZBQEAkgXf9oDVVgnJrpump",
             defaultInterval: "1D",
             timeZone:
               Intl.DateTimeFormat().resolvedOptions().timeZone ?? "Etc/UTC",
@@ -137,7 +137,7 @@ const PumpSection = () => {
                 Real-time egg market analysis powered by Moralis
               </p>
               <a
-                href="https://pump.fun/coin/AUz3m3YA5EAtNm3vBqav4bB3azgvkvMQhsie5xMtUJPN?coins_sort=market_cap"
+                href="https://pump.fun/coin/DDUthBrLTJq8uNjLFYmf2dZBQEAkgXf9oDVVgnJrpump"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all duration-200 hover:scale-105"
