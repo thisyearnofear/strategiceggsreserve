@@ -9,7 +9,6 @@ import GamesSection from "../components/GamesSection";
 const tabs = [
   { id: "dashboard", label: "🥚 Egg Reserve", component: EggReserveDashboard },
   { id: "affiliate", label: "🏠 Chicken Coops", component: AffiliateSection },
-  { id: "games", label: "🎮 Games", component: GamesSection },
   { id: "social", label: "📰 News Feed", component: SocialSection },
 ];
 
@@ -20,7 +19,7 @@ export default function Home() {
     tabs.find((tab) => tab.id === activeTab)?.component || EggReserveDashboard;
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen flex flex-col">
       {/* Navigation Tabs */}
       <div className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto">
@@ -51,9 +50,22 @@ export default function Home() {
       </div>
 
       {/* Active Section */}
-      <div className="py-4 md:py-6">
+      <div className="py-4 md:py-6 flex-grow">
         <ActiveComponent />
       </div>
+
+      {/* Footer */}
+      <footer className="py-4 text-center text-sm text-gray-500">
+        built by{" "}
+        <a
+          href="https://warpcast.com/papa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 hover:underline"
+        >
+          papa
+        </a>
+      </footer>
     </main>
   );
 }

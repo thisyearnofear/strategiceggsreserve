@@ -20,12 +20,12 @@ const GamesSection = () => {
                 </p>
                 <div className="flex justify-center">
                   <iframe
-                    frameBorder="0"
-                    src="https://itch.io/embed/426461"
+                    style={{ border: "none" }}
+                    src="https://itch.io/embed/426461?dark=true&linkback=true"
                     width="552"
                     height="167"
-                    title="Peckin Pixels"
-                    className="rounded-lg shadow-lg"
+                    title="Peckin' Pixels"
+                    className="rounded-lg shadow-lg w-full max-w-2xl"
                   >
                     <a href="https://wavingwalrus.itch.io/peckin-pixels">
                       Peckin&#039; Pixels by Waving Walrus Games
