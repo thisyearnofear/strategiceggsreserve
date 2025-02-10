@@ -51,12 +51,16 @@ const EggReserveDashboard = () => {
     currentPrice: 0,
     returnSinceStart: 0,
   });
+  const [highestPrice, setHighestPrice] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const eggResponse = await fetch("/api/prices");
         const eggData = await eggResponse.json();
+        // Find the highest price
+        const maxPrice = Math.max(...eggData.map((d: PriceData) => d.price));
+        setHighestPrice(maxPrice);
         setData(eggData);
       } catch (err) {
         if (err instanceof Error) {
@@ -208,51 +212,73 @@ const EggReserveDashboard = () => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 p-4">
-      {/* Dramatic ATH Banner with Date Selector */}
+      {/* Dramatic ATH Banner with Production Stats */}
       <Alert className="bg-yellow-100 border-yellow-400">
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <AlertTitle className="text-yellow-800 font-bold text-xl">
-              🚨 STRATEGIC EGG RESERVE (SERVE) ALERT 🚨
+              🚨{" "}
+              <span>
+                {" "}
+                <span className="bg-yellow-500 text-white px-1 rounded">S</span>
+                TRATEGIC
+                <span className="bg-yellow-500 text-white px-1 rounded">E</span>
+                GG
+                <span className="bg-yellow-500 text-white px-1 rounded">R</span>
+                ESER
+                <span className="bg-yellow-500 text-white px-1 rounded">
+                  VE
+                </span>
+              </span>{" "}
+              ALERT 🚨
             </AlertTitle>
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-yellow-700">Start Date:</span>
-              <Select
-                value={reserveStartDate}
-                onValueChange={setReserveStartDate}
-              >
-                <SelectTrigger className="w-[180px] bg-white">
-                  <SelectValue placeholder="Select date" />
-                </SelectTrigger>
-                <SelectContent>
-                  {data
-                    .map((d) => (
-                      <SelectItem key={d.date} value={d.date}>
-                        {new Date(d.date).toLocaleDateString()}
-                      </SelectItem>
-                    ))
-                    .filter((_, i) => i % 12 === 0)}
-                </SelectContent>
-              </Select>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-center">
+                <span className="text-2xl">🇨🇳</span>
+                <p className="font-semibold">China</p>
+                <p className="text-sm text-gray-600">612.83B eggs/year</p>
+                <p className="text-xs text-gray-500">434 eggs per capita</p>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-center">
+                <span className="text-2xl">🇯🇵</span>
+                <p className="font-semibold">Japan</p>
+                <p className="text-sm text-gray-600">400B eggs/year</p>
+                <p className="text-xs text-gray-500">3,225 eggs per capita</p>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="text-center">
+                <span className="text-2xl">🇺🇸</span>
+                <p className="font-semibold">USA</p>
+                <p className="text-sm text-gray-600">109.53B eggs/year</p>
+                <p className="text-xs text-gray-500">328 eggs per capita</p>
+              </div>
             </div>
           </div>
-          <AlertDescription className="text-yellow-700 text-lg">
-            If the US had established a {hypotheticalReserveSize}B egg Strategic
-            Reserve on {new Date(reserveStartDate).toLocaleDateString()} at $
-            {reserveMetrics.startPrice.toFixed(2)}/dozen, it would be worth{" "}
-            {formatTrillions(reserveMetrics.value)} today at $
-            {reserveMetrics.currentPrice.toFixed(2)}/dozen! That&apos;s{" "}
-            {reserveMetrics.debtPercentage.toFixed(1)}% of the{" "}
-            <a
-              href="https://usdebtclock.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-yellow-900"
-            >
-              national debt
-            </a>{" "}
-            (${US_DEBT_TRILLIONS}T)!
-          </AlertDescription>
+          <div className="bg-yellow-100 p-4 rounded-lg">
+            <p className="text-lg font-semibold text-center justify-center text-yellow-800 mb-2">
+              🎖️{" "}
+              <span>
+                <span className="bg-yellow-500 text-white px-1 rounded">S</span>
+                <span className="bg-yellow-500 text-white px-1 rounded">E</span>
+                <span className="bg-yellow-500 text-white px-1 rounded">R</span>
+                <span className="bg-yellow-500 text-white px-1 rounded">V</span>
+                <span className="bg-yellow-500 text-white px-1 rounded">
+                  E
+                </span>{" "}
+                YOUR NATION
+              </span>
+            </p>
+            <p className="text-sm text-yellow-700">
+              USA lags behind in eggs per capita. Strategic Egg Reserve is about
+              increasing egg capacity, closing the Egg Gap, and strengthening
+              national egg security!
+            </p>
+          </div>
         </div>
       </Alert>
 
@@ -294,7 +320,7 @@ const EggReserveDashboard = () => {
                   }
                 />
                 <ReferenceLine
-                  y={reserveMetrics.price}
+                  y={highestPrice}
                   stroke="#ff4444"
                   strokeDasharray="3 3"
                   label={{
@@ -303,6 +329,17 @@ const EggReserveDashboard = () => {
                     fill: "#ff4444",
                     fontSize: 14,
                     offset: -20,
+                  }}
+                />
+                <ReferenceLine
+                  x={reserveStartDate}
+                  stroke="#2563eb"
+                  strokeDasharray="3 3"
+                  label={{
+                    value: "🥚",
+                    position: "insideTopLeft",
+                    fill: "#2563eb",
+                    fontSize: 16,
                   }}
                 />
                 <Line
@@ -318,6 +355,55 @@ const EggReserveDashboard = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Date Selector and Calculation */}
+      <Alert className="bg-yellow-100 border-yellow-400">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-yellow-700">Start Date:</span>
+              <Select
+                value={reserveStartDate}
+                onValueChange={setReserveStartDate}
+              >
+                <SelectTrigger className="w-[180px] bg-white">
+                  <SelectValue placeholder="Select date" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px] overflow-y-auto">
+                  {[
+                    "1983-01-01",
+                    "1993-01-01",
+                    "2003-01-01",
+                    "2013-01-01",
+                    "2023-01-01",
+                  ].map((date) => (
+                    <SelectItem key={date} value={date}>
+                      {new Date(date).toLocaleDateString()}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <AlertDescription className="text-yellow-700 text-lg">
+            If the US had established a {hypotheticalReserveSize}B egg Strategic
+            Reserve on {new Date(reserveStartDate).toLocaleDateString()} at $
+            {reserveMetrics.startPrice.toFixed(2)}/dozen, it would be worth{" "}
+            {formatTrillions(reserveMetrics.value)} today at $
+            {reserveMetrics.currentPrice.toFixed(2)}/dozen! That&apos;s{" "}
+            {reserveMetrics.debtPercentage.toFixed(1)}% of the{" "}
+            <a
+              href="https://usdebtclock.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-yellow-900"
+            >
+              national debt
+            </a>{" "}
+            (${US_DEBT_TRILLIONS}T)!
+          </AlertDescription>
+        </div>
+      </Alert>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -371,65 +457,23 @@ const EggReserveDashboard = () => {
           <span className="absolute -top-2 -right-2 text-2xl animate-bounce">
             🏦
           </span>
-          <h3 className="font-bold text-center justify-center text-xl mb-4">
-            Egg-conomic Context
-          </h3>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="text-center">
-                  <span className="text-2xl">🇨🇳</span>
-                  <p className="font-semibold">China</p>
-                  <p className="text-sm text-gray-600">612.83B eggs/year</p>
-                  <p className="text-xs text-gray-500">434 eggs per capita</p>
-                </div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="text-center">
-                  <span className="text-2xl">🇯🇵</span>
-                  <p className="font-semibold">Japan</p>
-                  <p className="text-sm text-gray-600">400B eggs/year</p>
-                  <p className="text-xs text-gray-500">3,225 eggs per capita</p>
-                </div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="text-center">
-                  <span className="text-2xl">🇺🇸</span>
-                  <p className="font-semibold">USA</p>
-                  <p className="text-sm text-gray-600">109.53B eggs/year</p>
-                  <p className="text-xs text-gray-500">328 eggs per capita</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="bg-yellow-100 p-4 rounded-lg">
-              <p className="text-lg font-semibold text-center justify-center text-yellow-800 mb-2">
-                🎖️ SERVE YOUR NATION
-              </p>
-              <p className="text-sm text-yellow-700">
-                USA lags behind in eggs per capita. Strategic Egg Reserve is
-                about increasing egg capacity, closing the Egg Gap and
-                strengthening national egg security!
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-lg">
-                <span className="font-semibold">
-                  Strategic Reserve Value at ATH:
-                </span>{" "}
-                {formatTrillions(reserveMetrics.value)}
-              </p>
-              <p className="text-lg">
-                <span className="font-semibold">Current US National Debt:</span>{" "}
-                ${US_DEBT_TRILLIONS}T
-              </p>
-              <p className="text-lg font-bold text-purple-600 animate-pulse">
-                A Strategic Egg Reserve could have paid off{" "}
-                {reserveMetrics.debtPercentage.toFixed(1)}% of the national debt
-                while strengthening our egg independence! 🦅
-              </p>
-            </div>
+          <div className="space-y-2">
+            <p className="text-lg">
+              <span className="font-semibold">
+                Strategic Reserve Value at ATH:
+              </span>{" "}
+              {formatTrillions(reserveMetrics.value)}
+            </p>
+            <p className="text-lg">
+              <span className="font-semibold">Current US National Debt:</span> $
+              {US_DEBT_TRILLIONS}T
+            </p>
+            <p className="text-lg font-bold text-purple-600 animate-pulse">
+              A Strategic Egg Reserve could have paid off{" "}
+              {reserveMetrics.debtPercentage.toFixed(1)}% of the national debt
+              while strengthening our egg independence! 🦅
+            </p>
           </div>
         </div>
       </Card>
