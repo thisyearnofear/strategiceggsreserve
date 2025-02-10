@@ -12,9 +12,9 @@ const GamesSection = () => {
             </p>
 
             <div className="grid gap-8">
-              {/* Peckin' Pixels Game */}
+              {/* Peckin Pixels Game */}
               <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Peckin' Pixels</h3>
+                <h3 className="text-2xl font-semibold">Peckin Pixels</h3>
                 <p className="text-gray-600">
                   Help your chicken collect eggs while avoiding obstacles!
                 </p>
@@ -24,7 +24,7 @@ const GamesSection = () => {
                     src="https://itch.io/embed/426461"
                     width="552"
                     height="167"
-                    title="Peckin' Pixels"
+                    title="Peckin Pixels"
                     className="rounded-lg shadow-lg"
                   >
                     <a href="https://wavingwalrus.itch.io/peckin-pixels">
