@@ -427,10 +427,10 @@ const EggReserveDashboard = () => {
             </span>
             <h3 className="font-bold text-xl mb-2">All-Time High</h3>
             <p className="text-3xl font-bold text-red-600">
-              {formatPrice(reserveMetrics.price)}
+              {formatPrice(highestPrice)}
             </p>
             <p className="text-sm text-gray-600">
-              since {new Date(reserveStartDate).toLocaleDateString()}
+              {new Date(data[0]?.date).toLocaleDateString()}
             </p>
           </div>
         </Card>
