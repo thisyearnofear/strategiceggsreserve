@@ -52,15 +52,20 @@ const EggReserveDashboard = () => {
     returnSinceStart: 0,
   });
   const [highestPrice, setHighestPrice] = useState<number>(0);
+  const [highestPriceDate, setHighestPriceDate] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const eggResponse = await fetch("/api/prices");
         const eggData = await eggResponse.json();
-        // Find the highest price
+        // Find the highest price and its date
         const maxPrice = Math.max(...eggData.map((d: PriceData) => d.price));
+        const maxPriceEntry = eggData.find(
+          (d: PriceData) => d.price === maxPrice
+        );
         setHighestPrice(maxPrice);
+        setHighestPriceDate(maxPriceEntry?.date || "");
         setData(eggData);
       } catch (err) {
         if (err instanceof Error) {
@@ -430,7 +435,7 @@ const EggReserveDashboard = () => {
               {formatPrice(highestPrice)}
             </p>
             <p className="text-sm text-gray-600">
-              {new Date(data[0]?.date).toLocaleDateString()}
+              {new Date(highestPriceDate).toLocaleDateString()}
             </p>
           </div>
         </Card>
