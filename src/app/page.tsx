@@ -4,11 +4,12 @@ import { useState } from "react";
 import EggReserveDashboard from "../components/EggReserveDashboard";
 import AffiliateSection from "../components/AffiliateSection";
 import SocialSection from "../components/SocialSection";
-import GamesSection from "../components/GamesSection";
+import PumpSection from "@/components/PumpSection";
 
 const tabs = [
   { id: "dashboard", label: "🥚 Egg Reserve", component: EggReserveDashboard },
   { id: "affiliate", label: "🏠 Chicken Coops", component: AffiliateSection },
+  { id: "memes", label: "🤖 Memes", component: PumpSection },
   { id: "social", label: "📰 News Feed", component: SocialSection },
 ];
 
