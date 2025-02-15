@@ -159,10 +159,10 @@ const PumpSection = () => {
                 <AlertCircle className="h-4 w-4 text-yellow-600" />
                 <AlertDescription className="text-yellow-700">
                   <span className="font-bold">⚠️ Meme Token Warning:</span> The
-                  Jesus wif Egg ($Easter) token is a meme created for
+                  Strategic Egg Reserve ($SERVE) token is a meme created for
                   entertainment purposes only. It has no intrinsic value and
                   should not be considered a financial investment. Always do
-                  your own research and invest responsibly.
+                  your own research and degen responsibly.
                 </AlertDescription>
               </Alert>
             </div>

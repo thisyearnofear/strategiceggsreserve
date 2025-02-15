@@ -1,0 +1,16 @@
+<script>start("/Users/udingethe/gpt-engineer/givemelove-react/givemelove-nextjs/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow(".next",".next",1,480,"480 B",1739521203,"14/02/2025, 16:20:03");</script>
+<script>addRow("node_modules","node_modules",1,11040,"10.8 kB",1739519398,"14/02/2025, 15:49:58");</script>
+<script>addRow("public","public",1,224,"224 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("src","src",1,160,"160 B",1739518211,"14/02/2025, 15:30:11");</script>
+<script>addRow(".gitignore",".gitignore",0,480,"480 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("eslint.config.mjs","eslint.config.mjs",0,393,"393 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("next-env.d.ts","next-env.d.ts",0,211,"211 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("next.config.ts","next.config.ts",0,133,"133 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("package-lock.json","package-lock.json",0,236079,"231 kB",1739519404,"14/02/2025, 15:50:04");</script>
+<script>addRow("package.json","package.json",0,694,"694 B",1739519404,"14/02/2025, 15:50:04");</script>
+<script>addRow("postcss.config.mjs","postcss.config.mjs",0,135,"135 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("README.md","README.md",0,1450,"1.4 kB",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("tailwind.config.ts","tailwind.config.ts",0,393,"393 B",1739517941,"14/02/2025, 15:25:41");</script>
+<script>addRow("tsconfig.json","tsconfig.json",0,602,"602 B",1739517941,"14/02/2025, 15:25:41");</script>
